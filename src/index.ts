@@ -1,7 +1,19 @@
 import Fastify from "fastify";
+import cors from "@fastify/cors";
 
 const fastify = Fastify({logger: true});
 const port = 3000;
+
+fastify.register(cors, {
+  origin: (origin, cb) => {
+    if (!origin || origin.includes("localhost")) {
+      cb(null, true);
+      return;
+    }
+    cb(new Error("Not allowed"), false);
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+});
 
 fastify.get("/ping", async (request, reply) => {
   reply.send({ hello: "world" });
