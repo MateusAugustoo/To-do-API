@@ -18,5 +18,6 @@ model Task {
   name String
   description String
   done Boolean @default(false)
-  createdAt DateTime @default(now()) 
+  dateStart DateTime @default(now())
+  dateEnd DateTime 
 }
