@@ -2,6 +2,7 @@ export type TTAsk = {
   id: string;
   name: string;
   description: string;
-  status: "todo" | "doing" | "done";
-  created_at: Date;
+  status: "done" | "not done";
+  dateStart: Date;
+  dateEnd: Date;
 }
